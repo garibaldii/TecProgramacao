@@ -72,7 +72,10 @@ public class Pessoa {
 
     public Pessoa(String nome, int idade, Pessoa mae) {
         this(nome, idade);
-        this.mae = mae;
+        setMaternidade(mae);
+        setIrmandade(mae);
+        
+        
     }
 
     public Pessoa(String nome, int idade, Pessoa mae, Pessoa pai) {
@@ -106,14 +109,14 @@ public class Pessoa {
     public String nomeIrmaos() {
         String mensagem = "";
 
-        for (int i = 0; i < filhos.size(); i++) {
+        for (int i = 0; i < irmaos.size(); i++) {
 
-            mensagem += filhos.get(i).nome + ", ";
+            mensagem += irmaos.get(i).nome;
 
-            if (i == filhos.size() - 1) {
+            if (i < irmaos.size() - 1) {
 
-                mensagem += filhos.get(i).nome + ". ";
-                break;
+                mensagem +=  ". ";
+               
             }
         }
         return mensagem;
@@ -121,6 +124,33 @@ public class Pessoa {
     
     public int qtdIrmaos(){
         return this.irmaos.size();
+    }
+    
+    public void setMaternidade(Pessoa mae){
+        this.mae = mae;
+        mae.addFilho(this);
+    }
+    
+    private void addFilho(Pessoa filho){
+        filhos.add(filho);
+    }
+    
+    
+    public void setIrmandade(Pessoa mae){
+        this.mae = mae;
+        this.addIrmao(mae.filhos);
+        
+
+    }
+    
+    public void addIrmao(List<Pessoa> irmaos){ //esse método vai percorrer a lista de irmaos 
+        for ( int i = 0; i < irmaos.size() ; i ++){
+            if (this != irmaos.get(i)){
+                    this.irmaos.add(irmaos.get(i));
+                    irmaos.get(i).irmaos.add(this); 
+            
+            }
+        }
     }
 
 }

@@ -37,8 +37,14 @@ public class PrimeiroExJava {
        arvoreG[4] = new Pessoa("Matheus", 21, arvoreG[2]);
        //Meu irmão
        arvoreG[5] = new Pessoa("Marcel", 31, arvoreG[2]);
+       
+       
       
-        System.out.println(arvoreG[4].getNome() + " => Mãe: " + arvoreG[4].getMae());
+        System.out.println(arvoreG[4].getNome() + " => Mãe: " + arvoreG[5].getMae().getNome());
+        System.out.println(arvoreG[5].nomeIrmaos());
+        System.out.println(arvoreG[4].nomeIrmaos());
+        
+        
         
         
         
