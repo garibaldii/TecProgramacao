@@ -17,6 +17,7 @@ public class Vetores {
     }
 
     public int[][] exercicio1B(int[][] matrizBinario) {
+        
         int[][] matrizDecimal = new int[8][8];
 
         for (int linha = 0; linha < matrizBinario.length; linha++) {
