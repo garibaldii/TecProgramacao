@@ -1,3 +1,4 @@
+package Principal;
 import java.lang.Math;
 
 public class Calculadora {
@@ -58,31 +59,31 @@ public class Calculadora {
 
     public String getResultadoString() {
 
-        if (this.operador == null) {
+        if (operador == null) {
 
             if (valorB == 0) { 
                 // uma forma de separar a exibição do resultado dos dois métodos.
-                // para método decimal => binário, usa-se o valorA como referência
-                // e o contrário também acontece para binário => decimal. 
-                this.resultadoMsg = this.valorA + " em decimal é igual a " + this.resultado + " em binário";
+                // para método decimal PARA binário, usa-se o valorA como referência
+                // e o contrário também acontece em binário PARA decimal. 
+               resultadoMsg = valorA + " em decimal é igual a " + resultado + " em binário";
             }
             else{
-                this.resultadoMsg = this.valorB + " em binário é igual a " + this.resultado + " em decimal";
+                resultadoMsg = valorB + " em binário é igual a " + resultado + " em decimal";
             }
         }
 
         else {
             // nesse caso, só irá exibir esse formato se o método requisitado por um usuário tiver uma operacao
             // matemática direta. 
-            this.resultadoMsg = this.valorA + " " + this.operador + " " + this.valorB + " = " + this.resultado;
+           resultadoMsg = valorA + " " + operador + " " + valorB + " = " + resultado;
         }
         return resultadoMsg;
     }
 
     public double convertDecToBin(int decimal) {
-        this.operador = null;
+        operador = null;
+        valorB = 0;
         this.valorA = decimal;
-        this.valorB = 0;
         double resultadoBinario = 0;// inicializei a variável para poder somar na linha 81
         double resto;
         double posicao = 1;
@@ -100,19 +101,19 @@ public class Calculadora {
             // resto.
 
         }
-        this.resultado = resultadoBinario;
+        resultado = resultadoBinario;
         return resultadoBinario;
 
     }
 
     public double getResultadoValor() {
-        return this.resultado;
+        return resultado;
     }
 
     public int convertBinToDec(String binario) {
-        this.operador = null;
+        operador = null;
         int decimal = 0;
-        this.valorB = Double.parseDouble(binario);
+        valorB = Double.parseDouble(binario);
 
         for (int i = binario.length() - 1; i >= 0; i--) {
 
@@ -130,7 +131,7 @@ public class Calculadora {
 
             }
         }
-        this.resultado = decimal;
+        resultado = decimal;
         return decimal;
     }
 
