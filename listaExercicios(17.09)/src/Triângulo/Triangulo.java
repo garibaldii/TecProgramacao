@@ -1,4 +1,4 @@
-package Principal;
+package Triângulo;
 
 enum tipoTriangulo {
     TRIANGULO_RETANGULO, // angulo = 90;
@@ -35,22 +35,15 @@ public class Triangulo {
         double angulo_randianos = Math.toRadians(angulo);
         
         // seno = cateto oposto / hipotenusa
-        area = (segmentoAB * segmentoBC * (Math.sin(angulo_randianos))) / 2;
+        area = (0.5 * segmentoAB * segmentoBC * (Math.sin(angulo_randianos)));
 
         return area;
     }
 
     public double calculaPerimetro(){
-        double hipotenusa = Math.sqrt (Math.pow(segmentoAB, 2) + Math.pow(segmentoBC, 2));
+        double coseno_angulo = Math.cos(Math.toRadians(angulo));
+        double hipotenusa = Math.sqrt(Math.pow(segmentoAB, 2) + Math.pow(segmentoBC, 2) - 2 * segmentoAB * segmentoBC * coseno_angulo);;
         perimetro = hipotenusa + segmentoAB + segmentoBC;
         return perimetro;
     }
-
-    public static void main(String[] args) {
-        Triangulo triangulo_retangulo = new Triangulo(10, 10, 30);
-
-        System.out.println(triangulo_retangulo.calculaArea());
-        System.out.println(triangulo_retangulo.calculaPerimetro());
-    }
-
 }

@@ -1,28 +1,24 @@
 package Principal;
+import Calculadora.Calculadora;
+import Retângulo.FormasGeometricas;
+import Retângulo.Retangulo;
+import Triângulo.Triangulo;
 
-/**
- * Principal
- */
 public class Principal {
 
     public static void main(String[] args) {
-
         // ### Classe Calculadora ### //
 
         Calculadora calculadora = new Calculadora();
         calculadora.soma(5, 5);
         System.out.println(calculadora.getResultadoString());
-
         
         calculadora.convertBinToDec("1001");
         System.out.println(calculadora.getResultadoString());
-        
 
         calculadora.convertDecToBin(9);
         System.out.println(calculadora.getResultadoString());
-        
         // ### //
-
 
         // ### Classe Retângulo ### //
         Retangulo retangulo = new Retangulo(40, FormasGeometricas.RETANGULO, 30);
@@ -34,7 +30,6 @@ public class Principal {
         quadrado.calculaArea();
         quadrado.calculaPerimetro();
         System.out.println(quadrado.getResultadoString());
-
         // ### //
 
         // Classe Triângulo //
@@ -42,8 +37,6 @@ public class Principal {
         triangulo_retangulo.calculaArea();
         triangulo_retangulo.calculaPerimetro();
         System.out.println(triangulo_retangulo.getResultadoString());
-
-
 
         Triangulo triangulo_obtuso = new Triangulo(20, 30, 95);
         triangulo_obtuso.calculaArea();

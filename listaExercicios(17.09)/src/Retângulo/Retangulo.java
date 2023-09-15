@@ -1,10 +1,4 @@
-package Principal;
-enum FormasGeometricas{
-    QUADRADO,
-    RETANGULO   
-
-}
-
+package Retângulo;
 
 public class Retangulo {
     private double lado, area, perimetro, altura;
@@ -22,7 +16,7 @@ public class Retangulo {
 
     }
 
-    protected double calculaArea() {
+    public double calculaArea() {
         if (tipo.toString().equals("QUADRADO") ) {
             area = Math.pow(lado, 2);
             return area;
@@ -31,7 +25,7 @@ public class Retangulo {
         return area;
     }
 
-    protected double calculaPerimetro() {
+    public double calculaPerimetro() {
         if (tipo.toString().equals("QUADRADO")) {
             perimetro = 4 * lado;
             return perimetro;
@@ -69,21 +63,5 @@ public class Retangulo {
         this.lado = lado;
     }
     // ### //
-
-
-
-
-    public static void main(String[] args) {
-        Retangulo quadrado = new Retangulo(10, FormasGeometricas.QUADRADO);
-        Retangulo retangulo = new Retangulo(10,FormasGeometricas.RETANGULO, 5);
-
-        quadrado.calculaPerimetro();
-        quadrado.calculaArea();
-        System.out.println(quadrado.getResultadoString());
-
-        retangulo.calculaArea();
-        retangulo.calculaPerimetro();
-        System.out.println(retangulo.getResultadoString());
-    }
 
 }
