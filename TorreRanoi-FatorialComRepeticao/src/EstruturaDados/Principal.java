@@ -12,17 +12,15 @@ public class Principal {
         System.out.println(calculoFatoracao.whileFatorial(9));
         System.out.println(calculoFatoracao.forFatorial(9));
 
-
         // ###
 
 
         // ### TORRE DE HANOI ### 
 
+        TorreHanoi brincadeiraHanoi = new TorreHanoi();
 
 
-
-
-
+       
 
 
 

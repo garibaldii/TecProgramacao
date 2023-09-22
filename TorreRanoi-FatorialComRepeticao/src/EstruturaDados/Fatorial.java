@@ -51,6 +51,7 @@ public class Fatorial {
         System.out.println(calculo.whileFatorial(9));
         System.out.println(calculo.forFatorial(9));
 
+        TorreHanoi torreDeHanoi = new TorreHanoi();
 
     }
 }
