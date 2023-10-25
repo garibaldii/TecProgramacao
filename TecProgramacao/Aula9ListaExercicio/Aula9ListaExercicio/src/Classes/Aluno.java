@@ -31,7 +31,7 @@ public abstract class Aluno extends Pessoa {
 
     public String getNome() {
 
-        if (super.getGenero().equals("masculino")) {
+        if (super.getGenero().equals("Masculino")) {
 
             return "Aluno " + super.nome;
 

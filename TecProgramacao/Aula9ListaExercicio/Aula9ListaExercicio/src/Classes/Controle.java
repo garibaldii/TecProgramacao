@@ -17,16 +17,30 @@ public class Controle {
     private List<Pessoa> pessoas = new ArrayList<>();
 
     public String getPessoas() {
+        
+        StringBuilder result = new StringBuilder();
+        
         for (int i = 0; i < pessoas.size(); i++) {
-            return pessoas.get(i).getNome() + " ," + (pessoas.get(i)).getGenero() + " " + pessoas.get(i).getIdade() + " anos.";
+            
+            result.append(pessoas.get(i).getNome()).append(", ").append(pessoas.get(i).getGenero()).append(" ").append(pessoas.get(i).getIdade()).append(" anos").append("  ");
+            
         }
-        return null;
+        return result.toString();
     }
 
-    public String removerPessoas(Object index) {
-        for (int i = 0; i < pessoas.size(); i++) {
-            if (pessoas.get(i).getClass().toString() == )
+
+    
+    public String confereClasse(String classe){
+    List<Pessoa> aux = new ArrayList<>();
+    
+        for (int i = 0; i < pessoas.size(); i ++){
+               if (pessoas.get(i).getClass().toString().equals(classe) ){
+                   aux.add(pessoas.get(i));
+               }
+              
         }
+        
+        return aux.toString();
     }
 
     public void cadastrarAdm(String nome, String genero, int idade) {

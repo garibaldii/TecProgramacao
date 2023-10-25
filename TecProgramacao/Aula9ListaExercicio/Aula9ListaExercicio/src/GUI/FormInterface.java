@@ -16,6 +16,7 @@ import javax.swing.JOptionPane;
 public class FormInterface extends javax.swing.JFrame {
 
     Controle listaControle = new Controle();
+    
 
     /**
      * Creates new form FormInterface
@@ -125,7 +126,7 @@ public class FormInterface extends javax.swing.JFrame {
             }
         });
 
-        tipoInput.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrativo", "Aluno Colegial", "Aluno Fundamental", "Professor", "Todos" }));
+        tipoInput.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrativo", "Colegial", "Fundamental", "Professor", "Todos" }));
         tipoInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tipoInputActionPerformed(evt);
@@ -247,6 +248,7 @@ public class FormInterface extends javax.swing.JFrame {
 
                 case "Administrativo":
                     listaControle.cadastrarAdm(nome, genero, idade);
+                   list1.add(listaControle.confereClasse("Administrativo"));
                     break;
 
                 case "Professor":
@@ -264,10 +266,11 @@ public class FormInterface extends javax.swing.JFrame {
                 default:
                     nomeInput.setText("");
                     idadeInput.setText("");
+                    list1.add(listaControle.getPessoas());
             }
 
-            list1.add(listaControle.getPessoas());
-
+              
+            
         }
 
         //para identificar o tipo de um objeto, é necessário percorrer pela lista de pessoas e interagir com o índice nos métodos.getClass.equalsTo(*comparar com a classe correspondente(administrativo, aluno e professor)). 
@@ -279,7 +282,7 @@ public class FormInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_tipoInputActionPerformed
 
     private void list1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_list1ActionPerformed
-        System.out.print(listaControle.getPessoas());
+        
     }//GEN-LAST:event_list1ActionPerformed
 
     private void deletarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletarBtnActionPerformed
