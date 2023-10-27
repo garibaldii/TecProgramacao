@@ -5,8 +5,14 @@
  */
 package GUI;
 
+import Classes.Administrativo;
+import Classes.Colegial;
 import Classes.Controle;
+import Classes.Fundamental;
 import Classes.Pessoa;
+import Classes.Professor;
+import java.util.List;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
 /**
@@ -16,7 +22,6 @@ import javax.swing.JOptionPane;
 public class FormInterface extends javax.swing.JFrame {
 
     Controle listaControle = new Controle();
-    
 
     /**
      * Creates new form FormInterface
@@ -248,7 +253,6 @@ public class FormInterface extends javax.swing.JFrame {
 
                 case "Administrativo":
                     listaControle.cadastrarAdm(nome, genero, idade);
-                   list1.add(listaControle.confereClasse("Administrativo"));
                     break;
 
                 case "Professor":
@@ -266,11 +270,8 @@ public class FormInterface extends javax.swing.JFrame {
                 default:
                     nomeInput.setText("");
                     idadeInput.setText("");
-                    list1.add(listaControle.getPessoas());
             }
 
-              
-            
         }
 
         //para identificar o tipo de um objeto, é necessário percorrer pela lista de pessoas e interagir com o índice nos métodos.getClass.equalsTo(*comparar com a classe correspondente(administrativo, aluno e professor)). 
@@ -278,11 +279,56 @@ public class FormInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_cadastrarBtnActionPerformed
 
     private void tipoInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoInputActionPerformed
+        list1.removeAll();
 
+        if (tipoInput.getSelectedItem() == "Administrativo") {
+            List<Pessoa> listaAdministrativo = listaControle.confereClasse(Administrativo.class);
+            
+            for (int i = 0; i < listaAdministrativo.size(); i ++){
+                list1.add(listaAdministrativo.get(i).toString());
+                
+                // perguntar para o professor, como trocar o endereço da memória pela string formatada getPessoas();
+                
+            }
+
+        } 
+        // QUAL A DIFERENÇA DESTES DOIS TIPOS DE "FOR????"
+        else if (tipoInput.getSelectedItem() == "Professor") {
+            for (Pessoa pessoa : listaControle.confereClasse(Professor.class)) {
+                list1.add(pessoa.toString());
+
+            }
+        }
+        
+        else if (tipoInput.getSelectedItem() == "Fundamental") {
+            
+            for (Pessoa pessoa : listaControle.confereClasse(Fundamental.class)){
+                list1.add(pessoa.toString());
+            }
+        
+            
+        }
+        
+        else if (tipoInput.getSelectedItem() == "Colegial") {
+            
+            for (Pessoa pessoa : listaControle.confereClasse(Colegial.class)){
+                list1.add(pessoa.toString());
+            }
+        }
+        
+        else {
+              list1.add(listaControle.getPessoas());
+        }
+        
+        
+        
+        
+        
     }//GEN-LAST:event_tipoInputActionPerformed
 
     private void list1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_list1ActionPerformed
-        
+
+
     }//GEN-LAST:event_list1ActionPerformed
 
     private void deletarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletarBtnActionPerformed
@@ -290,15 +336,14 @@ public class FormInterface extends javax.swing.JFrame {
         int idade = Integer.parseInt(idadeInput.getText());
         String genero = (String) generoInput.getSelectedItem();
         String tipo = (String) tipoInput.getSelectedItem();
-        
-        
-        int escolha =  JOptionPane.showConfirmDialog(this, "Deseja deletar " + nome + "?", "Confirmação", JOptionPane.YES_NO_OPTION);
-        
-        if (escolha == JOptionPane.YES_OPTION){
-            
 
+        int escolha = JOptionPane.showConfirmDialog(this, "Deseja deletar " + nome + "?", "Confirmação", JOptionPane.YES_NO_OPTION);
+
+        if (escolha == JOptionPane.YES_OPTION) {
+            listaControle.excluirPessoas(tipo, nome, genero, idade);
+            list1.add(nome +" excluído com sucesso");
         }
-        
+
     }//GEN-LAST:event_deletarBtnActionPerformed
 
     /**

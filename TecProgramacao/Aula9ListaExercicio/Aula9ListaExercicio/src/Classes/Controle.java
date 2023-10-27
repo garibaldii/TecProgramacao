@@ -16,33 +16,63 @@ public class Controle {
 
     private List<Pessoa> pessoas = new ArrayList<>();
 
+    
+    
+    
     public String getPessoas() {
-        
+
         StringBuilder result = new StringBuilder();
-        
+
         for (int i = 0; i < pessoas.size(); i++) {
-            
+
             result.append(pessoas.get(i).getNome()).append(", ").append(pessoas.get(i).getGenero()).append(" ").append(pessoas.get(i).getIdade()).append(" anos").append("  ");
-            
+
         }
         return result.toString();
-    }
-
-
-    
-    public String confereClasse(String classe){
-    List<Pessoa> aux = new ArrayList<>();
-    
-        for (int i = 0; i < pessoas.size(); i ++){
-               if (pessoas.get(i).getClass().toString().equals(classe) ){
-                   aux.add(pessoas.get(i));
-               }
-              
-        }
         
-        return aux.toString();
     }
 
+
+    
+    
+    
+    
+    public List<Pessoa> confereClasse(Class classe) {
+        
+        List<Pessoa> aux = new ArrayList<>();
+
+        for (int i = 0; i < pessoas.size(); i++) {
+            
+            if (classe.isInstance(pessoas.get(i))) {
+                
+                    aux.add(pessoas.get(i));
+
+                }
+
+            }
+
+            return aux;
+        }
+
+    
+    public List<Pessoa> excluirPessoas(String classe, String nome, String genero, int idade){
+        List<Pessoa> listaAtualizada = new ArrayList<>();
+        for (int i = 0; i < pessoas.size(); i++){
+            
+            if ((pessoas.get(i).getClass().toString()).equals(classe) & pessoas.get(i).getNome().equals(nome) & pessoas.get(i).getGenero().equals(genero) & pessoas.get(i).getIdade() == idade){
+                continue;
+            }
+            else{
+                listaAtualizada.add(pessoas.get(i));
+
+// precisa atualizar a lista já existente, se não ele deixará de existir na lista atualizada e continuará existindo na lista padrão
+            }
+    }
+    pessoas = listaAtualizada;
+    return pessoas;
+    }
+    
+    
     public void cadastrarAdm(String nome, String genero, int idade) {
         pessoas.add(new Administrativo(nome, genero, idade));
     }
