@@ -340,7 +340,7 @@ public class FormInterface extends javax.swing.JFrame {
         int escolha = JOptionPane.showConfirmDialog(this, "Deseja deletar " + nome + "?", "Confirmação", JOptionPane.YES_NO_OPTION);
 
         if (escolha == JOptionPane.YES_OPTION) {
-            listaControle.excluirPessoas(tipo, nome, genero, idade);
+            listaControle.excluirPessoas(tipo, nome, genero);
             list1.add(nome +" excluído com sucesso");
         }
 

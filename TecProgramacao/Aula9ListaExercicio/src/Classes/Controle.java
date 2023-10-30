@@ -55,21 +55,19 @@ public class Controle {
         }
 
     
-    public List<Pessoa> excluirPessoas(String classe, String nome, String genero, int idade){
-        List<Pessoa> listaAtualizada = new ArrayList<>();
-        for (int i = 0; i < pessoas.size(); i++){
+    public List<Pessoa> excluirPessoas(String classe, String nome, String genero){
+        
+        for (int i = pessoas.size() - 1; i >= 0; i--){
+            Pessoa pessoa = pessoas.get(i);
             
-            if ((pessoas.get(i).getClass().toString()).equals(classe) & pessoas.get(i).getNome().equals(nome) & pessoas.get(i).getGenero().equals(genero) & pessoas.get(i).getIdade() == idade){
-                continue;
-            }
-            else{
-                listaAtualizada.add(pessoas.get(i));
-
-// precisa atualizar a lista já existente, se não ele deixará de existir na lista atualizada e continuará existindo na lista padrão
+            if (pessoa.getNome().equals(nome) && pessoa.getGenero().equals(genero)){ //pensei em pessoa.getClass.toString().equals(classe), porém como será aplicado o toString() sendo que ele sofreu um @override para se encaixar no retorno da String e não do endereçamento da memória na implementacao da funcao confereClasse em FormInterface.tipoInputActionPerformed(). 
+                pessoas.remove(pessoa);
             }
     }
-    pessoas = listaAtualizada;
+
+    System.out.print(pessoas);
     return pessoas;
+    
     }
     
     

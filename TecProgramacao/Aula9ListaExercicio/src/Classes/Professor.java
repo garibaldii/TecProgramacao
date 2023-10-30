@@ -34,10 +34,10 @@ public final class Professor extends Funcionario {
 
         if (super.getGenero().equals("masculino")) {
 
-            return "Professor " + super.nome;
+            return super.nome;
 
         } else {
-            return "Professora " + super.nome;
+            return super.nome;
         }
     }
 }

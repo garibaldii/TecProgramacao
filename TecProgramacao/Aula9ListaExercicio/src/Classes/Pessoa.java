@@ -15,7 +15,7 @@ public abstract class Pessoa {
     private int idade;
 
 
-    public Pessoa(String nome, String genero, int idade){
+    public Pessoa(String nome, String genero, int idade){ 
         this.nome = nome;
         this.genero = genero;
         this.idade = idade;
@@ -54,6 +54,11 @@ public abstract class Pessoa {
 
     // ### //
 
+    
+    @Override
+    public String toString(){
+        return nome + " idade " + idade + " gênero " + genero;
+    }
 
 
 }
